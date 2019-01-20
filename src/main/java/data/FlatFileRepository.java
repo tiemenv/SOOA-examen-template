@@ -13,7 +13,7 @@ public class FlatFileRepository implements Repository {
 
     //TODO: rename json file to reflect objects stored
     //TODO: mixmatch of serialization and flatfile storage
-    
+
     private File f = new File("placeholder.json");
 
     @Override
