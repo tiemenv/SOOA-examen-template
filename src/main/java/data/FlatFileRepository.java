@@ -33,22 +33,28 @@ public class FlatFileRepository implements Repository {
 
     @Override
     public void deletePlaceholderObject(PlaceholderObject po) {
-
+        //TODO: implement if needed
     }
 
     @Override
     public void updatePlaceholderObject(PlaceholderObject po) {
-
+        //TODO implement if needed
     }
 
     @Override
-    public PlaceholderObject getPlaceholderObject(int id) {
-        for(PlaceholderObject po : this.getPlaceholderObjects()){
-            if(po.getId() == id){
-                return po;
-            }
+    public PlaceholderObject getPlaceholderObject(String name) {
+        File f = new File(name + ".ser");
+
+        try (
+                FileInputStream fis = new FileInputStream(f);
+                ObjectInputStream ois = new ObjectInputStream(fis)
+                ) {
+            PlaceholderObject po = (PlaceholderObject) ois.readObject();
+            return po;
+
+        } catch (IOException | ClassNotFoundException ex){
+            throw new PlaceholderException("Unable to get object from file ", ex);
         }
-        return null;
     }
 
     @Override
@@ -56,15 +62,13 @@ public class FlatFileRepository implements Repository {
         ArrayList<PlaceholderObject> pos = new ArrayList<>();
         try (
                 FileInputStream fis = new FileInputStream(f);
-                Scanner s = new Scanner(fis);
+                Scanner s = new Scanner(fis)
         ) {
             while (s.hasNextLine()) {
                 String poName = s.nextLine();
                 int poId = parseInt(s.nextLine());
                 pos.add(new PlaceholderObject(poName, poId));
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -9,7 +9,7 @@ public interface Repository {
     int addPlaceholderObject(PlaceholderObject po);
     void deletePlaceholderObject(PlaceholderObject po);
     void updatePlaceholderObject(PlaceholderObject po);
-    PlaceholderObject getPlaceholderObject(int id);
+    PlaceholderObject getPlaceholderObject(String name);
     ArrayList<PlaceholderObject> getPlaceholderObjects();
 }
 

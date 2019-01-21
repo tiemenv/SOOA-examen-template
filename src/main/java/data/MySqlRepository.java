@@ -30,7 +30,7 @@ public class MySqlRepository implements Repository {
     }
 
     @Override
-    public PlaceholderObject getPlaceholderObject(int id) {
+    public PlaceholderObject getPlaceholderObject(String name) {
         return null;
     }
 

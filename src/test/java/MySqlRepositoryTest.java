@@ -37,14 +37,14 @@ public class MySqlRepositoryTest {
     @Test
     public void getObject(){
         //TODO: construct our object
-        PlaceholderObject po = new PlaceholderObject();
+        PlaceholderObject po = new PlaceholderObject("name", 1);
         //TODO: add right id
-        assertEquals(po, repo.getPlaceholderObject(1));
+        assertEquals(po, repo.getPlaceholderObject("name"));
     }
 
     @Test
     public void addObject(){
-        PlaceholderObject po = new PlaceholderObject ();
+        PlaceholderObject po = new PlaceholderObject ("name",1);
         repo.addPlaceholderObject(po);
         //TODO: insert actual numbers
         assertEquals(16+1, repo.getPlaceholderObjects().size());
@@ -53,10 +53,10 @@ public class MySqlRepositoryTest {
     @Test
     public void updatePlaceholderObject(){
         //TODO: insert actual numbers
-        PlaceholderObject po = repo.getPlaceholderObject(1);
+        PlaceholderObject po = repo.getPlaceholderObject("name");
         //update po with something
         repo.updatePlaceholderObject(po);
-        assertEquals(po, repo.getPlaceholderObject(1));
+        assertEquals(po, repo.getPlaceholderObject("name"));
     }
 
     @AfterClass
