@@ -1,20 +1,17 @@
 package data;
 
+import util.PlaceholderException;
+
+
 public class Repositories {
-    private static Repository instance = new MySqlRepository();
 
-    private Repositories() {
+    private static MySqlRepository mySqlRepository = new MySqlRepository();
+
+    private Repositories(){
+
     }
 
-    public static Repository getInstance() {
-        return instance;
-    }
+    public static MySqlRepository getMySqlRepository() {return mySqlRepository;}
 
-//    /**
-//     * buggy code, making a new repository each time this function gets called can cause problems with concurrency
-//     */
-//    public Repository getRepository() {
-//
-//        return new MySqlRepository();
-//    }
+
 }
