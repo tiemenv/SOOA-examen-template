@@ -1,17 +1,22 @@
 package data;
 
-import util.PlaceholderException;
-
 
 public class Repositories {
 
-    private static MySqlRepository mySqlRepository = new MySqlRepository();
+    private static DoctorRepositoryMySql doctorRepository = new DoctorRepositoryMySql();
+    private static ConsultRepositoryFlatFile consultRepository = new ConsultRepositoryFlatFile();
 
-    private Repositories(){
+    private Repositories() {
 
     }
 
-    public static MySqlRepository getMySqlRepository() {return mySqlRepository;}
+    public static DoctorRepositoryMySql getDoctorRepository() {
+        return doctorRepository;
+    }
+
+    public static ConsultRepositoryFlatFile getConsultRepository(){
+        return consultRepository;
+    }
 
 
 }
